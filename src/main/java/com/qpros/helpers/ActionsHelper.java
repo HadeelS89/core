@@ -7,7 +7,6 @@ import com.qpros.exceptions.InvalidElementTypeException;
 import com.qpros.exceptions.TooFewWindowsException;
 import com.qpros.exceptions.TooManyWindowsException;
 import com.qpros.exceptions.UnableToFindWindowException;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
@@ -18,7 +17,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -315,7 +313,7 @@ public class ActionsHelper extends Base {
             return element;
         } catch (Exception ex) {
             logManger.ERROR(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -328,7 +326,7 @@ public class ActionsHelper extends Base {
             return element;
         } catch (Exception ex) {
             logManger.ERROR(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -345,8 +343,8 @@ public class ActionsHelper extends Base {
             return element;
         }
         catch(Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -357,8 +355,8 @@ public class ActionsHelper extends Base {
             wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
             logManger.INFO("Wait for all elements located in " + by.toString() + " is performed");
         } catch (Exception e) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method waitForAllElementsLocatedBy | Exception occurred while waiting for presence of all elements located by " + by.toString() + ". "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method waitForAllElementsLocatedBy | Exception occurred while waiting for presence of all elements located by " + by.toString() + ". "
                     + e.getMessage());
             throw e;
         }
@@ -369,8 +367,8 @@ public class ActionsHelper extends Base {
             WebDriverWait wait = new WebDriverWait(driver, Constant.WaitingSeconds);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
         } catch (Exception e) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
                     + by.toString() + ". Error: " + e.getMessage());
             throw e;
         }
@@ -381,8 +379,8 @@ public class ActionsHelper extends Base {
             WebDriverWait wait = new WebDriverWait(driver, waitTimeSec);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
         } catch (Exception e) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
                     + by.toString() + ". Error: " + e.getMessage());
             throw e;
         }
@@ -393,8 +391,8 @@ public class ActionsHelper extends Base {
             WebDriverWait wait = new WebDriverWait(driver, Constant.WaitingSeconds);
             wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         } catch (Exception e) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
                     + by.toString() + ". Error: " + e.getMessage());
             throw e;
         }
@@ -405,8 +403,8 @@ public class ActionsHelper extends Base {
             WebDriverWait wait = new WebDriverWait(driver, Constant.WaitingSeconds);
             wait.until(ExpectedConditions.visibilityOfElementLocated(elementlocator));
         } catch (Exception e) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
                     + elementlocator.toString() + ". Error: " + e.getMessage());
             throw e;
         }
@@ -417,8 +415,8 @@ public class ActionsHelper extends Base {
             WebDriverWait wait = new WebDriverWait(driver, waitTimeSec);
             wait.until(ExpectedConditions.visibilityOfElementLocated(elementlocator));
         } catch (Exception e) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method waitForInvisibilityOfElementLocated | Exception occurred while waiting for invisibility of an element: "
                     + elementlocator.toString() + ". Error: " + e.getMessage());
             throw e;
         }
@@ -434,8 +432,8 @@ public class ActionsHelper extends Base {
                 }
             });
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -450,8 +448,8 @@ public class ActionsHelper extends Base {
                 }
             });
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -466,8 +464,8 @@ public class ActionsHelper extends Base {
                 }
             });
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -482,8 +480,8 @@ public class ActionsHelper extends Base {
                 }
             });
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -498,8 +496,8 @@ public class ActionsHelper extends Base {
                 }
             });
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -510,8 +508,8 @@ public class ActionsHelper extends Base {
             wait.until(ExpectedConditions.textToBePresentInElementLocated(by, text));
             logManger.INFO("Wait Until text Present in Element " + by.toString() + " is performed");
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method waitUntilTextPresentInElement | Exception occurred while waiting for presence of all elements located by " + by.toString() + ". "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method waitUntilTextPresentInElement | Exception occurred while waiting for presence of all elements located by " + by.toString() + ". "
                     + ex.getMessage());
             throw ex;
         }
@@ -523,8 +521,8 @@ public class ActionsHelper extends Base {
             wait.until(ExpectedConditions.textToBePresentInElementValue(by, text));
             logManger.INFO("Wait Until text Present in Element " + by.toString() + " is performed");
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method waitUntilTextPresentInElement | Exception occurred while waiting for presence of all elements located by " + by.toString() + ". "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method waitUntilTextPresentInElement | Exception occurred while waiting for presence of all elements located by " + by.toString() + ". "
                     + ex.getMessage());
             throw ex;
         }
@@ -536,8 +534,8 @@ public class ActionsHelper extends Base {
             wait.until(ExpectedConditions.textToBePresentInElementValue(wElement, text));
             logManger.INFO("Wait Until text Present in Element " + wElement.toString() + " is performed");
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method waitUntilTextPresentInElement | Exception occurred while waiting for presence of all elements located by " + wElement.toString() + ". "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method waitUntilTextPresentInElement | Exception occurred while waiting for presence of all elements located by " + wElement.toString() + ". "
                     + ex.getMessage());
             throw ex;
         }
@@ -549,8 +547,8 @@ public class ActionsHelper extends Base {
             logManger.INFO("Set the implicit waiting time to " + Constant.WaitingSeconds
                     + " seconds");
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -569,8 +567,8 @@ public class ActionsHelper extends Base {
                 clickElement(findElement(clickLocator));
             }
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -589,8 +587,8 @@ public class ActionsHelper extends Base {
                 clickElement(wElement);
             }
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -609,8 +607,8 @@ public class ActionsHelper extends Base {
                 clickButtonThroughJS(wElement, "Click Element");
             }
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -632,8 +630,8 @@ public class ActionsHelper extends Base {
                 }
             }
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -642,8 +640,8 @@ public class ActionsHelper extends Base {
         try {
             driver.manage().timeouts().implicitlyWait(ms, TimeUnit.MILLISECONDS);
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -658,8 +656,8 @@ public class ActionsHelper extends Base {
             logManger.INFO("Click action is performed on '" + controlName + "' button");
         }
         catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -670,8 +668,8 @@ public class ActionsHelper extends Base {
             logManger.INFO("Click action is performed...");
         }
         catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -682,8 +680,8 @@ public class ActionsHelper extends Base {
             logManger.INFO("Click action is performed...");
         }
         catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -694,8 +692,8 @@ public class ActionsHelper extends Base {
             action.click(element).perform();
         }
         catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -706,8 +704,8 @@ public class ActionsHelper extends Base {
             action.moveToElement(element).doubleClick().perform();
         }
         catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -718,8 +716,8 @@ public class ActionsHelper extends Base {
             Actions action = new Actions(driver);
             action.click(element).perform();
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -730,8 +728,8 @@ public class ActionsHelper extends Base {
             executor.executeScript("arguments[0].click();", element);
             logManger.INFO("Click action through javascript is performed on '" + controlName + "' button");
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -744,8 +742,8 @@ public class ActionsHelper extends Base {
             executor.executeScript(event);
             logManger.INFO("Click action through javascript is performed on '" + controlName + "' button");
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -764,8 +762,8 @@ public class ActionsHelper extends Base {
             else
                 throw new Exception("Can't find the Element, Locator: " + locator.toString());
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -775,8 +773,8 @@ public class ActionsHelper extends Base {
             wElement.sendKeys(text);
             logManger.INFO("Sendkeys " + text);
         }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -787,8 +785,8 @@ public class ActionsHelper extends Base {
             wElement.sendKeys(text);
             logManger.INFO("Sendkeys with Clear " + text);
         }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -798,8 +796,8 @@ public class ActionsHelper extends Base {
             wElement.sendKeys(key);
             logManger.INFO("Sendkeys " + key);
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -809,34 +807,34 @@ public class ActionsHelper extends Base {
             driver.findElement(locator).sendKeys(key);
             logManger.INFO("Sendkeys " + key);
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
 
-    public static void sendKeys(int rowNumber, WebElement element, String columnName) throws Exception {
-        try {
-            sendKeys(rowNumber, element, columnName, columnName);
-        }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            throw ex;
-        }
-    }
+//    public static void sendKeys(int rowNumber, WebElement element, String columnName) throws Exception {
+//        try {
+//            sendKeys(rowNumber, element, columnName, columnName);
+//        }catch (Exception ex){
+//            logManger.ERROR(ex.getMessage());
+//            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+//            throw ex;
+//        }
+//    }
 
-    public static void sendKeys(int rowNumber, WebElement element, String excelColumnName, String elementName) throws Exception {
-        try {
-            String dataValue = ExcelUtils.getCellData(rowNumber, excelColumnName);
-            if (!dataValue.isEmpty())
-                sendKeys(element, elementName, dataValue);
-            logManger.INFO("Sendkeys " + dataValue);
-        }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            throw ex;
-        }
-    }
+//    public static void sendKeys(int rowNumber, WebElement element, String excelColumnName, String elementName) throws Exception {
+//        try {
+//            String dataValue = ExcelUtils.getCellData(rowNumber, excelColumnName);
+//            if (!dataValue.isEmpty())
+//                sendKeys(element, elementName, dataValue);
+//            logManger.INFO("Sendkeys " + dataValue);
+//        }catch (Exception ex){
+//            logManger.ERROR(ex.getMessage());
+//            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+//            throw ex;
+//        }
+//    }
 
     public static void sendKeys(WebElement element, String elementName, String dataValue) throws Exception {
         try {
@@ -844,41 +842,41 @@ public class ActionsHelper extends Base {
             element.sendKeys(dataValue);
             logManger.INFO("'" + dataValue + "' is entered in '" + elementName + "' input");
         }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
 
-    public static void sendKeysThroughJS(int rowNumber, WebElement element, String columnName) throws Exception {
-        try {
-            sendKeysThroughJS(rowNumber, element, columnName, columnName);
-        }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            throw ex;
-        }
-    }
+//    public static void sendKeysThroughJS(int rowNumber, WebElement element, String columnName) throws Exception {
+//        try {
+//            sendKeysThroughJS(rowNumber, element, columnName, columnName);
+//        }catch (Exception ex){
+//            logManger.ERROR(ex.getMessage());
+//            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+//            throw ex;
+//        }
+//    }
 
-    public static void sendKeysThroughJS(int rowNumber, WebElement element, String columnName, String fieldName) throws Exception {
-        try {
-            String dataValue = ExcelUtils.getCellData(rowNumber, columnName);
-            ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1]", element, dataValue);
-            logManger.INFO("'" + dataValue + "' is entered in '" + fieldName + "' input");
-        }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            throw ex;
-        }
-    }
+//    public static void sendKeysThroughJS(int rowNumber, WebElement element, String columnName, String fieldName) throws Exception {
+//        try {
+//            String dataValue = ExcelUtils.getCellData(rowNumber, columnName);
+//            ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1]", element, dataValue);
+//            logManger.INFO("'" + dataValue + "' is entered in '" + fieldName + "' input");
+//        }catch (Exception ex){
+//            logManger.ERROR(ex.getMessage());
+//            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+//            throw ex;
+//        }
+//    }
 
     public static void sendKeysThroughJS(String dataValue, WebElement element, String fieldName) throws Exception {
         try {
             ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1]", element, dataValue);
             logManger.INFO("'" + dataValue + "' is entered in '" + fieldName + "' input");
         }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -887,8 +885,8 @@ public class ActionsHelper extends Base {
         try {
             ((JavascriptExecutor) driver).executeScript("arguments[0].innerHTML = arguments[1]", element, dataValue);
         }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -897,8 +895,8 @@ public class ActionsHelper extends Base {
         try {
             ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1]", element, dataValue);
         }catch (Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -917,8 +915,8 @@ public class ActionsHelper extends Base {
                 checkBox.click();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -932,8 +930,8 @@ public class ActionsHelper extends Base {
                 checkBox.click();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -948,8 +946,8 @@ public class ActionsHelper extends Base {
                 checkBox.click();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -963,8 +961,8 @@ public class ActionsHelper extends Base {
                 checkBox.click();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -981,80 +979,80 @@ public class ActionsHelper extends Base {
                 return false;
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             return false;
         }
     }
 
-    public static void Check(int rowNumber, WebElement element, String columnName) throws Exception {
-        try {
-            Check(rowNumber, element, columnName, columnName);
-        } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            throw ex;
-        }
-    }
+//    public static void Check(int rowNumber, WebElement element, String columnName) throws Exception {
+//        try {
+//            Check(rowNumber, element, columnName, columnName);
+//        } catch (Exception ex) {
+//            logManger.ERROR(ex.getMessage());
+//            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+//            throw ex;
+//        }
+//    }
 
-    public static void Check(int rowNumber, WebElement element, String columnName, String fieldName) throws Exception {
-        String dataValue = ExcelUtils.getCellData(rowNumber, columnName);
-        if ("Yes".equalsIgnoreCase(dataValue)) {
-            if (!element.isSelected())
-                element.click();
-            logManger.INFO("It is checked '" + fieldName + "' checkElement box");
-        } else {
-            if (element.isSelected())
-                element.click();
-            logManger.INFO("It is not checked '" + fieldName + "' checkElement box");
-        }
-    }
+//    public static void Check(int rowNumber, WebElement element, String columnName, String fieldName) throws Exception {
+//        String dataValue = ExcelUtils.getCellData(rowNumber, columnName);
+//        if ("Yes".equalsIgnoreCase(dataValue)) {
+//            if (!element.isSelected())
+//                element.click();
+//            logManger.INFO("It is checked '" + fieldName + "' checkElement box");
+//        } else {
+//            if (element.isSelected())
+//                element.click();
+//            logManger.INFO("It is not checked '" + fieldName + "' checkElement box");
+//        }
+//    }
 
     //</editor-fold>
 
     //<editor-fold desc="SelectOption Methods">
 
-    public static void selectOption(int rowNumber, WebElement element, String columnName) throws Exception {
-        try {
-            selectOption(rowNumber, element, columnName, columnName);
-        } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            throw ex;
-        }
-    }
+//    public static void selectOption(int rowNumber, WebElement element, String columnName) throws Exception {
+//        try {
+//            selectOption(rowNumber, element, columnName, columnName);
+//        } catch (Exception ex) {
+//            logManger.ERROR(ex.getMessage());
+//            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+//            throw ex;
+//        }
+//    }
 
-    public static void selectOption(int rowNumber, WebElement element, String columnName, String fieldName) throws Exception {
-        Boolean founded = false;
-        String fullText = "";
-        String dataValue = ExcelUtils.getCellData(rowNumber, columnName);
-        Select select = new Select(element);
-        List<WebElement> list = select.getOptions();
-        for (WebElement option : list) {
-            fullText = option.getText();
-            if (fullText.contains(dataValue)) {
-                select.selectByVisibleText(fullText);
-                founded = true;
-                break;
-            }
-        }
+//    public static void selectOption(int rowNumber, WebElement element, String columnName, String fieldName) throws Exception {
+//        Boolean founded = false;
+//        String fullText = "";
+//        String dataValue = ExcelUtils.getCellData(rowNumber, columnName);
+//        Select select = new Select(element);
+//        List<WebElement> list = select.getOptions();
+//        for (WebElement option : list) {
+//            fullText = option.getText();
+//            if (fullText.contains(dataValue)) {
+//                select.selectByVisibleText(fullText);
+//                founded = true;
+//                break;
+//            }
+//        }
 
-        if (founded)
-            logManger.INFO(String.format("'" + fullText + "' is selected in '" + fieldName + "' drop down list", dataValue));
-        else {
-            logManger.Error("Option '" + fullText + "' is not found in '" + fieldName + "' drop down list");
-            // I put this line intentionally to generate an exception.
-            (new Select(element)).selectByVisibleText(dataValue);
-        }
-    }
+//        if (founded)
+//            logManger.INFO(String.format("'" + fullText + "' is selected in '" + fieldName + "' drop down list", dataValue));
+//        else {
+//            logManger.ERROR("Option '" + fullText + "' is not found in '" + fieldName + "' drop down list");
+//            // I put this line intentionally to generate an exception.
+//            (new Select(element)).selectByVisibleText(dataValue);
+//        }
+//    }
 
     public static void selectByValue(By locator, String value) throws Exception {
         try {
             Select select = new Select(driver.findElement(locator));
             select.selectByValue(value);
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1064,8 +1062,8 @@ public class ActionsHelper extends Base {
             Select select = new Select(welement);
             select.selectByValue(value);
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1075,8 +1073,8 @@ public class ActionsHelper extends Base {
             Select select = new Select(driver.findElement(locator));
             select.selectByIndex(index);
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1086,8 +1084,8 @@ public class ActionsHelper extends Base {
             Select select = new Select(webElement);
             select.selectByIndex(index);
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1097,8 +1095,8 @@ public class ActionsHelper extends Base {
             Select select = new Select(driver.findElement(locator));
             select.selectByVisibleText(text);
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1108,8 +1106,8 @@ public class ActionsHelper extends Base {
             Select select = new Select(welement);
             select.selectByVisibleText(text);
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1122,8 +1120,8 @@ public class ActionsHelper extends Base {
                 return false;
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             return false;
         }
 
@@ -1141,8 +1139,8 @@ public class ActionsHelper extends Base {
                 return null;
             }
         }catch(Exception ex){
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             return null;
         }
     }
@@ -1156,8 +1154,8 @@ public class ActionsHelper extends Base {
             }
         }catch (Exception ex)
         {
-            logManger.Error("Class ActionHelper| Method pauseTime | Exception occurred: Exception: " + ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method pauseTime | Exception occurred: Exception: " + ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1170,8 +1168,8 @@ public class ActionsHelper extends Base {
                 return false;
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1181,8 +1179,8 @@ public class ActionsHelper extends Base {
             java.util.List elementsFound = driver.findElements(locator);
             return elementsFound.size();
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1198,8 +1196,8 @@ public class ActionsHelper extends Base {
                 normalizeWaitingTimeForElement();
 
         } catch (Exception e) {
-            logManger.Error(e.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(e.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             if (extraTime)
                 normalizeWaitingTimeForElement();
         }
@@ -1214,8 +1212,8 @@ public class ActionsHelper extends Base {
                 new Actions(driver).clickAndHold(webElement).perform();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1226,8 +1224,8 @@ public class ActionsHelper extends Base {
                 new Actions(driver).clickAndHold(webElement).perform();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1240,8 +1238,8 @@ public class ActionsHelper extends Base {
                 new Actions(driver).release(webElement).perform();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1252,8 +1250,8 @@ public class ActionsHelper extends Base {
                 new Actions(driver).release(webElement).perform();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1267,8 +1265,8 @@ public class ActionsHelper extends Base {
                 builder.moveToElement(webElement).moveByOffset(x, y).click().perform();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1280,8 +1278,8 @@ public class ActionsHelper extends Base {
                 builder.moveToElement(webElement).moveByOffset(x, y).click().perform();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1294,8 +1292,8 @@ public class ActionsHelper extends Base {
                 webElement.submit();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1306,8 +1304,8 @@ public class ActionsHelper extends Base {
                 webElement.submit();
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
     }
@@ -1328,8 +1326,8 @@ public class ActionsHelper extends Base {
                 element = driver.findElement(by);
             logManger.INFO(messageSuccess);
         } catch (Exception ex) {
-            logManger.Error(messageError);
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(messageError);
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
         return element;
@@ -1341,8 +1339,8 @@ public class ActionsHelper extends Base {
                 return webElement.getCssValue(value);
             }
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
             throw ex;
         }
         return null;
@@ -1355,15 +1353,15 @@ public class ActionsHelper extends Base {
             String fullUrl = "";//Environments.get() + url;
             logManger.INFO("Full URL: " + fullUrl);
             if (driver == null) {
-                logManger.Error("Driver is null");
+                logManger.ERROR("Driver is null");
                 throw new Exception("Driver is null");
             }
             System.out.println(fullUrl);
             driver.get(fullUrl);
             logManger.INFO("Going to " + fullUrl);
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method goToURL | Exception occurred while going to a page : "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method goToURL | Exception occurred while going to a page : "
                     + ex.getMessage());
             throw ex;
         }
@@ -1385,8 +1383,8 @@ public class ActionsHelper extends Base {
                 waitForAllElementsLocatedBy(window);
             }
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method displayWindow | Exception: " + ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method displayWindow | Exception: " + ex.getMessage());
             throw ex;
         }
     }
@@ -1397,8 +1395,8 @@ public class ActionsHelper extends Base {
             int y = scrollToItem.getCoordinates().inViewPort().getY();
             ((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + y + ");");
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1409,7 +1407,7 @@ public class ActionsHelper extends Base {
             int y = scrollToItem.getCoordinates().inViewPort().getY();
             ((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + y + ");");
         } catch (Exception ex) {
-            logManger.Error(ex.getMessage());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1419,8 +1417,8 @@ public class ActionsHelper extends Base {
             WebElement mapObject = driver.findElement(By.xpath(xpath));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", mapObject);
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1430,8 +1428,8 @@ public class ActionsHelper extends Base {
             WebElement mapObject = driver.findElement(By.cssSelector(selector));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", mapObject);
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1440,8 +1438,8 @@ public class ActionsHelper extends Base {
         try {
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", wElement);
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1453,8 +1451,8 @@ public class ActionsHelper extends Base {
             actions.moveToElement(element);
             actions.perform();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1465,8 +1463,8 @@ public class ActionsHelper extends Base {
             actions.moveToElement(wElement);
             actions.perform();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1493,8 +1491,8 @@ public class ActionsHelper extends Base {
             throw new UnableToFindWindowException("Unable to switch windows!");
 
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             return null;
         }
     }
@@ -1504,8 +1502,8 @@ public class ActionsHelper extends Base {
             driver.switchTo().window(windowTitle);
             return true;
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             return null;
         }
     }
@@ -1514,8 +1512,8 @@ public class ActionsHelper extends Base {
         try {
             driver.manage().window().maximize();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1528,8 +1526,8 @@ public class ActionsHelper extends Base {
             driver.switchTo().alert();
             alertPresent = true;
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
         return alertPresent;
@@ -1540,8 +1538,8 @@ public class ActionsHelper extends Base {
             Alert alert = driver.switchTo().alert();
             alert.dismiss();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1551,8 +1549,8 @@ public class ActionsHelper extends Base {
         try {
             title = driver.getTitle();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             return null;
         }
         return title;
@@ -1564,8 +1562,8 @@ public class ActionsHelper extends Base {
             url = driver.getCurrentUrl();
             return url;
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             return null;
         }
     }
@@ -1574,8 +1572,8 @@ public class ActionsHelper extends Base {
         try {
             driver.close();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1584,8 +1582,8 @@ public class ActionsHelper extends Base {
         try {
             driver.navigate().back();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
 
@@ -1595,8 +1593,8 @@ public class ActionsHelper extends Base {
         try {
             driver.navigate().forward();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1605,8 +1603,8 @@ public class ActionsHelper extends Base {
         try {
             driver.manage().deleteAllCookies();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1615,8 +1613,8 @@ public class ActionsHelper extends Base {
         try {
             driver.navigate().refresh();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error(ex.getMessage());
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getMessage());
             throw ex;
         }
     }
@@ -1625,8 +1623,8 @@ public class ActionsHelper extends Base {
         try {
             ((JavascriptExecutor) driver).executeScript(jsCode);
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method executeJS | Exception occurred while executing javascript. Code: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method executeJS | Exception occurred while executing javascript. Code: "
                     + jsCode + "   Exception: " + ex.getMessage());
             throw ex;
         }
@@ -1646,7 +1644,7 @@ public class ActionsHelper extends Base {
             }
             return value;
         } catch (Exception ex) {
-            logManger.Error("Class ActionHelper| Method generateTimestamp | Exception occurred: Exception: " + ex.getMessage());
+            logManger.ERROR("Class ActionHelper| Method generateTimestamp | Exception occurred: Exception: " + ex.getMessage());
             throw ex;
         }
     }
@@ -1660,7 +1658,7 @@ public class ActionsHelper extends Base {
             Thread.sleep(timeToSleep);
         }catch (Exception ex)
         {
-            logManger.Error("Class ActionHelper| Method pauseTime | Exception occurred: Exception: " + ex.getMessage());
+            logManger.ERROR("Class ActionHelper| Method pauseTime | Exception occurred: Exception: " + ex.getMessage());
             throw ex;
         }
     }
@@ -1674,34 +1672,34 @@ public class ActionsHelper extends Base {
             value = value.substring(posi + 1);
             return value;
         } catch (Exception ex) {
-            logManger.Error("Class ActionHelper| Method getTestCaseName | Exception desc : "
+            logManger.ERROR("Class ActionHelper| Method getTestCaseName | Exception desc : "
                     + ex.getMessage());
             throw ex;
         }
     }
 
-    public static void captureScreenShot(WebDriver driver, String methodName)throws Exception{
-        try {
-            //logger.info("Take Screenshot");
-            DateFormat dfn = new SimpleDateFormat("yyyy/MM/dd");
-            DateFormat df = new SimpleDateFormat("MMM . dd . yyyy _HH:mm:ss");
-
-            String formattedDate = df.format(new Date());
-            String folderName = dfn.format(new Date());
-
-            //ScreenShots will be saved in different levels in folders, i.e, /#YEAR/#MONTH/#DAY.jpg
-            formattedDate = formattedDate.replace(" ", "");
-            formattedDate = formattedDate.replace(":", "");
-            String filePath = "src/test/java/screenShots/" + folderName.replace("/", "") + "/" + getTestName() + "/" + methodName + "_" + formattedDate + ".jpg";
-
-            java.io.File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenShot, new File(filePath));
-        } catch (Exception ex) {
-            logManger.Error("Class ActionHelper| Method Capture Screenshot | Exception desc : "
-                    + ex.getMessage());
-            throw ex;
-        }
-    }
+//    public static void //captureScreenShot(WebDriver driver, String methodName)throws Exception{
+//        try {
+//            //logger.info("Take Screenshot");
+//            DateFormat dfn = new SimpleDateFormat("yyyy/MM/dd");
+//            DateFormat df = new SimpleDateFormat("MMM . dd . yyyy _HH:mm:ss");
+//
+//            String formattedDate = df.format(new Date());
+//            String folderName = dfn.format(new Date());
+//
+//            //ScreenShots will be saved in different levels in folders, i.e, /#YEAR/#MONTH/#DAY.jpg
+//            formattedDate = formattedDate.replace(" ", "");
+//            formattedDate = formattedDate.replace(":", "");
+//            String filePath = "src/test/java/screenShots/" + folderName.replace("/", "") + "/" + getTestName() + "/" + methodName + "_" + formattedDate + ".jpg";
+//
+//            java.io.File screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//            FileUtils.copyFile(screenShot, new File(filePath));
+//        } catch (Exception ex) {
+//            logManger.ERROR("Class ActionHelper| Method Capture Screenshot | Exception desc : "
+//                    + ex.getMessage());
+//            throw ex;
+//        }
+//    }
 
     public static String getDate(int days) {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -1735,8 +1733,8 @@ public class ActionsHelper extends Base {
 
             return columnIndex;
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method getColumnIndex | Exception occurred while executing javascript. Code: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method getColumnIndex | Exception occurred while executing javascript. Code: "
                     + jsCode + "   Exception: " + ex.getMessage());
             throw ex;
         }
@@ -1754,8 +1752,8 @@ public class ActionsHelper extends Base {
             }
             return filter;
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method getTxtFilter | Exception occurred while executing javascript. Code: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method getTxtFilter | Exception occurred while executing javascript. Code: "
                     + jsCode + "   Exception: " + ex.getMessage());
             throw ex;
         }
@@ -1772,8 +1770,8 @@ public class ActionsHelper extends Base {
             return value;
 
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method getGridCellValue | Exception occurred while executing javascript. Code: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method getGridCellValue | Exception occurred while executing javascript. Code: "
                     + jsCode + "   Exception: " + ex.getMessage());
             throw ex;
         }
@@ -1785,8 +1783,8 @@ public class ActionsHelper extends Base {
         try {
             count = ((Long) ((JavascriptExecutor) driver).executeScript(jsCode)).intValue();
         } catch (Exception ex) {
-            captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
-            logManger.Error("Class ActionHelper| Method getGridRowNumber | Exception occurred while executing javascript. Code: "
+            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR("Class ActionHelper| Method getGridRowNumber | Exception occurred while executing javascript. Code: "
                     + jsCode + "   Exception: " + ex.getMessage());
             throw ex;
         }

@@ -1,2 +1,5 @@
-package com.qpros.common;public class Constant {
+package com.qpros.common;
+
+public class Constant {
+    public static long WaitingSeconds=30;
 }

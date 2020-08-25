@@ -1,2 +1,4 @@
-package com.qpros.exceptions;public class TooFewWindowsException {
+package com.qpros.exceptions;
+
+public class TooFewWindowsException extends Exception {
 }
