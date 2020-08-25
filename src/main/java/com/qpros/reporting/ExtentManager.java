@@ -11,9 +11,9 @@ public class ExtentManager extends Base {
 
     private static ExtentReports extent;
     private static String reportClassName;
-    private static String reportFileName = String.format("QPros-Automation_Report-%s-%s.html",
+    public static String reportFileName = String.format("QPros-Automation_Report-%s-%s.html",
             ActionsHelper.getTodayDate(),System.currentTimeMillis());
-    private static String path = System.getProperty("user.dir") + "/src/main/resources/Reports/";
+    public static String path = System.getProperty("user.dir") + "/src/main/resources/Reports/";
 
     public static ExtentReports getInstance() {
         if (extent == null)

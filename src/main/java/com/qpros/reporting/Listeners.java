@@ -2,6 +2,9 @@ package com.qpros.reporting;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.qpros.helpers.EmailHelper;
+import com.qpros.helpers.ReadWriteHelper;
+import lombok.SneakyThrows;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
@@ -23,6 +26,7 @@ public class Listeners extends TestListenerAdapter{
 
     }
 
+    @SneakyThrows
     @Override
     public synchronized void onFinish(ITestContext context) {
 
@@ -31,6 +35,22 @@ public class Listeners extends TestListenerAdapter{
 
         }
         extent.flush();
+
+        EmailHelper sender = new EmailHelper();
+
+        String emails = ReadWriteHelper.ReadData( "EmailsTo" );
+        String toSendEmails = ReadWriteHelper.ReadData( "SendMail" );
+        System.out.println(emails);
+        if (!emails.equals("") && toSendEmails.equals("true")) {
+            //String test = "Hello,This,Is,A,Test"
+            //String[] desired = test.split(",");
+            //system.out.prinln(desired[1]);
+            String[] emailArray = emails.split(",");
+            for(String email: emailArray) {
+                sender.sendMail(email , ExtentManager.path + ExtentManager.reportFileName);
+            }
+
+        }
     }
 
     @Override
