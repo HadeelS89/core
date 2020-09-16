@@ -11,7 +11,7 @@ import org.testng.TestListenerAdapter;
 
 public class Listeners extends TestListenerAdapter{
 
-    private static ExtentReports extent = ExtentManager.createInstance();
+    private static final ExtentReports extent = ExtentManager.createInstance();
     public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
     ExceptionListner exceptionListener = new ExceptionListner();
     public static boolean CONSOLE;
@@ -42,9 +42,6 @@ public class Listeners extends TestListenerAdapter{
         String toSendEmails = ReadWriteHelper.ReadData( "SendMail" );
         System.out.println(emails);
         if (!emails.equals("") && toSendEmails.equals("true")) {
-            //String test = "Hello,This,Is,A,Test"
-            //String[] desired = test.split(",");
-            //system.out.prinln(desired[1]);
             String[] emailArray = emails.split(",");
             for(String email: emailArray) {
                 sender.sendMail(email , ExtentManager.path + ExtentManager.reportFileName);

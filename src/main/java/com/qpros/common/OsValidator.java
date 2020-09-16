@@ -2,7 +2,7 @@ package com.qpros.common;
 
 public class OsValidator {
 
-    private static String OS = System.getProperty("os.name").toLowerCase();
+    private static final String OS = System.getProperty("os.name").toLowerCase();
 
     public static String  getDeviceOs(){
         if (isWindows()) {

@@ -3,7 +3,7 @@ package com.qpros.reporting;
 import java.util.HashMap;
 
 class StateHelper {
-    private static HashMap<String, Object> CrossStepState = new HashMap<>();
+    private static final HashMap<String, Object> CrossStepState = new HashMap<>();
     public static void setStepState(String key, String value)
     {
         CrossStepState.put(key, value);

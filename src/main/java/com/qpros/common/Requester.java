@@ -47,7 +47,7 @@ public class Requester {
     public String ParameterizedEndPoint(Map<String, String> params) {
         StringBuilder paramterizedEndPoint = new StringBuilder();
         params.forEach((k, v) -> paramterizedEndPoint.append(k).append("=").append(v).append("&"));
-        return paramterizedEndPoint.toString().substring(0, paramterizedEndPoint.toString().length() - 1);
+        return paramterizedEndPoint.substring(0, paramterizedEndPoint.toString().length() - 1);
     }
 
     public String requestBodybuilder(Object obj) {

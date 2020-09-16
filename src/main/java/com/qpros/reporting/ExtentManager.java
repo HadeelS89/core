@@ -1,8 +1,7 @@
 package com.qpros.reporting;
 
 import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import com.aventstack.extentreports.reporter.configuration.ChartLocation;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.qpros.common.Base;
 import com.qpros.helpers.ActionsHelper;
@@ -22,15 +21,19 @@ public class ExtentManager extends Base {
     }
 
     public static ExtentReports createInstance() {
+        ExtentSparkReporter extentSparkReporter= new ExtentSparkReporter(path + reportFileName);
         StateHelper.setStepState("reportName", reportFileName);
-        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path + reportFileName);
-        htmlReporter.config().setTestViewChartLocation( ChartLocation.TOP);
-        htmlReporter.config().setChartVisibilityOnOpen(true);
-        htmlReporter.config().setTheme( Theme.STANDARD);
-        htmlReporter.config().setEncoding("utf-8");
+        //htmlReporter.config().setTestViewChartLocation( ChartLocation.TOP);
+        //htmlReporter.config().setChartVisibilityOnOpen(true);
+        extentSparkReporter.config().setTheme( Theme.STANDARD);
+        extentSparkReporter.config().setEncoding("utf-8");
+
+
 
         extent = new ExtentReports();
-        extent.attachReporter(htmlReporter);
+        extent.attachReporter(extentSparkReporter);
+
+
 
         return extent;
     }

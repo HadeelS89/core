@@ -27,7 +27,7 @@ public enum Month {
             lookup.put(m.getCode(), m);
     }
 
-    private int code;
+    private final int code;
 
      Month(int code) {
         this.code = code;

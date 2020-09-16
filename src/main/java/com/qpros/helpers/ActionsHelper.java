@@ -7,6 +7,7 @@ import com.qpros.exceptions.InvalidElementTypeException;
 import com.qpros.exceptions.TooFewWindowsException;
 import com.qpros.exceptions.TooManyWindowsException;
 import com.qpros.exceptions.UnableToFindWindowException;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
@@ -17,6 +18,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -26,9 +28,9 @@ import java.util.logging.Logger;
 
 
 public class ActionsHelper extends Base {
-    protected static Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
+    protected static final Logger LOGGER = Logger.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
     public static WebDriverWait wait;
-    public static LogManger logManger;
+    public static final LogManger logManger= new LogManger(ActionsHelper.class.getSimpleName());
 
     public static void waitForSeconds(Integer timeWait) {
         driver.manage().timeouts().implicitlyWait(timeWait, TimeUnit.SECONDS);
@@ -82,13 +84,11 @@ public class ActionsHelper extends Base {
     }
 
     public static String getImagePath(String imageName) {
-        String path = System.getProperty("user.dir") + "/src/main/resources/images/" + imageName;
-        return path;
+        return System.getProperty("user.dir") + "/src/main/resources/images/" + imageName;
     }
 
     public String getXMLPath(String xmlFileName) {
-        String path = System.getProperty("user.dir") + "/src/main/resources/xmlfiles/" + xmlFileName;
-        return path;
+        return System.getProperty("user.dir") + "/src/main/resources/xmlfiles/" + xmlFileName;
     }
 
     public static String getTodayDate() {
@@ -229,9 +229,9 @@ public class ActionsHelper extends Base {
 
     public static WebElement getElementFromList(List<WebElement> element, String value) {
         WebElement elmnt = null;
-        for (int i = 0; i < element.size(); i++) {
-            if (element.get(i).getText().equalsIgnoreCase(value)) {
-                elmnt = element.get(i);
+        for (WebElement webElement : element) {
+            if (webElement.getText().equalsIgnoreCase(value)) {
+                elmnt = webElement;
                 break;
             }
         }
@@ -424,13 +424,9 @@ public class ActionsHelper extends Base {
 
     public static void waitUntilElementIsEnabled(final By elementlocator) throws Exception {
         try {
+            //@Override
             new WebDriverWait(driver, Constant.WaitingSeconds) {
-            }.until(new ExpectedCondition<Boolean>() {
-                //@Override
-                public Boolean apply(WebDriver driver) {
-                    return (driver.findElement(elementlocator).isEnabled());
-                }
-            });
+            }.until((ExpectedCondition<Boolean>) driver -> (driver.findElement(elementlocator).isEnabled()));
         } catch (Exception ex) {
             logManger.ERROR(ex.getMessage());
             //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
@@ -783,10 +779,10 @@ public class ActionsHelper extends Base {
         try {
             wElement.clear();
             wElement.sendKeys(text);
-            logManger.INFO("Sendkeys with Clear " + text);
+            logManger.INFO("Sendkeys with Clear");
         }catch (Exception ex){
-            logManger.ERROR(ex.getMessage());
-            //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
+            getScreenshot(driver, new Exception().getStackTrace()[0].getMethodName());
+            logManger.ERROR(ex.getStackTrace().toString());
             throw ex;
         }
     }
@@ -973,11 +969,7 @@ public class ActionsHelper extends Base {
             if (!checkBox.getAttribute("type").toLowerCase().equals("checkbox")) {
                 throw new InvalidElementTypeException("This elementLocator is not a checkbox!");
             }
-            if (checkBox.getAttribute("checked").equals("checked")) {
-                return true;
-            } else {
-                return false;
-            }
+            return checkBox.getAttribute("checked").equals("checked");
         } catch (Exception ex) {
             logManger.ERROR(ex.getMessage());
             //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
@@ -1114,11 +1106,7 @@ public class ActionsHelper extends Base {
 
     public static boolean doesElementExist(By locator) throws Exception {
         try {
-            if (driver.findElements(locator).size() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return driver.findElements(locator).size() > 0;
         } catch (Exception ex) {
             logManger.ERROR(ex.getMessage());
             //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
@@ -1480,8 +1468,8 @@ public class ActionsHelper extends Base {
                 }
             }
             String currentWindow = driver.getWindowHandle();
-            for (Iterator i = listOfWindows.iterator(); i.hasNext(); ) {
-                String selectedWindowHandle = i.next().toString();
+            for (Object listOfWindow : listOfWindows) {
+                String selectedWindowHandle = listOfWindow.toString();
                 if (!selectedWindowHandle.equals(currentWindow)) {
                     driver.switchTo().window(selectedWindowHandle);
                     return true;
@@ -1706,8 +1694,7 @@ public class ActionsHelper extends Base {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, days);
         Date tmpDate = calendar.getTime();
-        String finalDate = dateFormat.format(tmpDate);
-        return finalDate;
+        return dateFormat.format(tmpDate);
     }
 
     //</editor-fold>
@@ -1766,8 +1753,7 @@ public class ActionsHelper extends Base {
             int columnIndex = getColumnIndex(gridName, columnHeader) + moveFromIndex;
 
             jsCode = "return $('" + gridName + "').grid.cells($('" + gridName + "').grid.getSelectedRowId()," + columnIndex + ").getValue(); ";
-            String value = (String) ((JavascriptExecutor) driver).executeScript(jsCode);
-            return value;
+            return (String) ((JavascriptExecutor) driver).executeScript(jsCode);
 
         } catch (Exception ex) {
             //captureScreenShot(driver, new Exception().getStackTrace()[0].getMethodName());
@@ -1801,8 +1787,20 @@ public class ActionsHelper extends Base {
         SAUCELABS
     }
 
-    //</editor-fold>
-}
+    //driver and screenshotName
+    public static String getScreenshot(WebDriver driver, String screenshotName) throws Exception {
+        //below line is just to append the date format with the screenshot name to avoid duplicate names
+        String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        //after execution, you could see a folder "FailedTestsScreenshots" under src folder
+        String destination =System.getProperty("user.dir") + "/src/main/resources/Reports/"+screenshotName+dateName+".png";
+        logManger.Capture(destination);
+        File finalDestination = new File(destination);
+        FileUtils.copyFile(source, finalDestination);
+        //Returns the captured file path
+        return destination;
+    }}
 
 
 

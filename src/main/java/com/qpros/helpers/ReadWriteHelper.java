@@ -1,6 +1,9 @@
 package com.qpros.helpers;
 
 
+import com.googlecode.jcsv.reader.CSVEntryParser;
+import com.googlecode.jcsv.reader.CSVReader;
+import com.googlecode.jcsv.reader.internal.CSVReaderBuilder;
 import org.testng.Assert;
 import org.w3c.dom.*;
 
@@ -13,6 +16,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
+import java.util.List;
 import java.util.Properties;
 
 public class ReadWriteHelper {
@@ -174,11 +178,16 @@ public class ReadWriteHelper {
 
             System.out.println("Done creating XML File");
 
-        } catch (ParserConfigurationException pce) {
+        } catch (ParserConfigurationException | TransformerException pce) {
             pce.printStackTrace();
-        } catch (TransformerException tfe) {
-            tfe.printStackTrace();
         }
 
+    }
+
+    public static List GetDataFromCSV(String filename, CSVEntryParser entryParser) throws IOException {
+        InputStream fileAsStream = new FileInputStream(filename);
+        Reader reader = new InputStreamReader(fileAsStream);
+        CSVReader csvFieldsReader = new CSVReaderBuilder(reader).entryParser(entryParser).build();
+        return  csvFieldsReader.readAll();
     }
 }

@@ -1,8 +1,4 @@
 package com.qpros.utils;
-import com.github.javafaker.Faker;
-import org.apache.commons.lang3.RandomStringUtils;
-
-import java.util.Random;
 
 public class RandomString {
 

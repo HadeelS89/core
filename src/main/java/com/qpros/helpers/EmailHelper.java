@@ -23,13 +23,13 @@ public class EmailHelper extends Base {
      * Utility for interacting with an Email application
      */
         //public static EmailHelper emailHelper;
-        private Folder folder;
+        private final Folder folder;
 
         public enum EmailFolder {
             INBOX("INBOX"),
             SPAM("SPAM");
 
-            private String text;
+            private final String text;
 
              EmailFolder(String text){
                 this.text = text;
@@ -291,17 +291,14 @@ public class EmailHelper extends Base {
         }
 
     }
-    public static void main(String args[]) throws MessagingException, GeneralSecurityException {
+    public static void main(String[] args) throws MessagingException, GeneralSecurityException {
         EmailHelper testHelper = new EmailHelper();
         try {
             System.out.println(testHelper.getVerificationCode("ADEK Online - Registration invitation", "HEIAuthorizationSystem/Client/registration?token=", 38));
 
-        }
-        catch (NullPointerException e){
+        } catch (Exception e){
             e.printStackTrace();
 
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 
     }
